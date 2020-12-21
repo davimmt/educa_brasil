@@ -30,7 +30,7 @@
                 </a>
             </div>
             <div class="col-xl-3 col-md-6 col-sm-12 py-2">
-                <a class="text-dark" href="#">
+                <a class="text-dark" href="{{ route('pecas.index') }}">
                     <div class="bg-white shadow-sm border rounded p-3" style="position: relative">
                         <i class="fas fa-microscope fa-2x"></i>
                         <span class="h5" style="position: absolute; right: 20px; top: 30%">Peças</span>

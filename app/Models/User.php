@@ -49,4 +49,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Article::class);
     }
+
+    /**
+     * Get the pieces from the user.
+     */
+    public function pieces()
+    {
+        return $this->hasMany(Pieces::class);
+    }
 }

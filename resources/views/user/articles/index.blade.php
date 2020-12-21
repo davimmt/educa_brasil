@@ -6,26 +6,24 @@
             <span>LISTA DE ARTIGOS</span>
             <a class="btn btn-sm btn-primary float-right" href="{{ route('artigos.create') }}">Novo</a>
         </p>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Título</th>
-                    <th scope="col">Autor</th>
-                    <th scope="col">Data</th>
-                    <th scope="col"><i class="fas fa-cog"></i></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($articles as $item)
-                    <tr>
-                        <th scope="row">{{ $item->title }}</th>
-                        <td>{{ $item->author->name }}</td>
-                        <td>{{ $item->created_at }}</td>
-                        <td><a href="{{ route('artigos.show', $item->id) }}"><i class="fas fa-eye"></i></a></td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+        
+        <div class="row">
+            @foreach ($articles as $item)
+                <div class="col-xl-4 col-md-6 col-sm-12 mb-3">
+                    <a style="text-decoration: none" href="{{ route('artigos.show', $item->id) }}">
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="h5 card-title">{{ $item->title }}</p>
+                                <p class="card-subtitle text-muted float-right" style="font-size: 10px">{{ $item->author->name }}</p>
+                                <br>
+                                <p class="card-subtitle text-muted float-right" style="font-size: 10px">{{ $item->created_at }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
+        </div>
+
         {{ $articles->links('pagination::bootstrap-4') }}
     </div>
 @endsection

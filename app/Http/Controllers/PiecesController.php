@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
+use App\Models\Pieces;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 
-class ArticleController extends Controller
+class PiecesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::paginate(12);
-        return view('user/articles/index', ['articles' => $articles]);
+        $pieces = Pieces::paginate(12);
+        return view('user/pieces/index', ['pieces' => $pieces]);
     }
 
     /**
@@ -27,7 +27,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('user/articles/create');
+        return view('user/pieces/create');
     }
 
     /**
@@ -40,10 +40,15 @@ class ArticleController extends Controller
     {
         $data = $this->validator($request->all())->validate();
 
-        if (Article::create([
-            'user_id' => auth()->id(),
-            'title'   => $data['title'],
-            'content' => $data['content']
+        if (!$request->image) $request->image = 'http://via.placeholder.com/720x400';
+        else $request->image = $request->file('image')->store('storage/images/pieces');
+
+        if (Pieces::create([
+            'user_id'     => auth()->id(),
+            'image'       => $request->image,
+            'title'       => $data['title'],
+            'description' => $data['description'],
+            'helpers'     => $data['helpers']
         ])) {
             return redirect()->back()->with('response', ['success', 'Sucesso!']);
         }
@@ -59,8 +64,8 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        $article = Article::find($id);
-        return view('user/articles/show', ['article' => $article]);
+        $piece = Pieces::find($id);
+        return view('user/pieces/show', ['piece' => $piece]);
     }
 
     /**
@@ -106,8 +111,9 @@ class ArticleController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'title'   => ['required', 'string', 'max:50', 'unique:articles'],
-            'content' => ['required', 'string', 'unique:articles']
+            'title'       => ['required', 'string', 'max:50', 'unique:pieces'],
+            'description' => ['required', 'string', 'unique:pieces'],
+            'helpers'     => ['required', 'string'],
         ]);
     }
 }
