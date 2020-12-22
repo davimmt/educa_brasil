@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pieces extends Model
+class Piece extends Model
 {
     use HasFactory;
 
@@ -25,11 +25,37 @@ class Pieces extends Model
     ];
 
     /**
-     * Get the user that owns the article.
+     * Get the user that owns the piece.
      */
     public function author()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    /**
+     * Get the user(s) that manages the piece.
+     */
+    public function managers()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
+    /**
+     * Check if current user is manager of the piece.
+     */
+    public function user_is_manager()
+    {
+        $user_is_manager = false;
+
+        foreach ($this->managers as $item) {
+            if (auth()->id() == $item->id) $user_is_manager = true;
+        }
+
+        return $user_is_manager;
+    }
+
+    public function getImageAttribute($value) {
+        return str_replace('public', 'storage', $value);
     }
 
     public function getCreatedAtAttribute($value) {

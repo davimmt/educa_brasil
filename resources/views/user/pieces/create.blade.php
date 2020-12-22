@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-12 mt-2">
                     <label for="helpers">Referências</label>
-                    <textarea id="helpers" name="helpers" class="form-control @error('helpers') is-invalid @enderror">{{ old('helpers') }}</textarea>
+                    <textarea id="helpers" name="helpers" rows="5" class="form-control @error('helpers') is-invalid @enderror">{{ old('helpers') }}</textarea>
 
                     @error('helpers')
                         <span class="invalid-feedback" role="alert">

@@ -16,8 +16,10 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::paginate(12);
-        return view('user/articles/index', ['articles' => $articles]);
+        $articles = Article::simplePaginate(15);
+        $articles_total = Article::count();
+        
+        return view('user/articles/index', ['articles' => $articles, 'articles_total' => $articles_total]);
     }
 
     /**

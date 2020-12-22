@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePieceManagersTable extends Migration
+class CreatePieceUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreatePieceManagersTable extends Migration
      */
     public function up()
     {
-        Schema::create('piece_managers', function (Blueprint $table) {
+        Schema::create('piece_user', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('piece_id')->constrained();
+            $table->unique('user_id', 'piece_id');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreatePieceManagersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('piece_managers');
+        Schema::dropIfExists('piece_user');
     }
 }

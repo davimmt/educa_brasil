@@ -19,7 +19,7 @@ class CreatePiecesTable extends Migration
             $table->string('image')->unique()->nullable();
             $table->string('title')->unique();
             $table->string('description');
-            $table->string('helpers')->nullable();
+            $table->string('helpers', 60000)->nullable();
             $table->timestamps();
         });
     }

@@ -21,7 +21,7 @@ Auth::routes([
 Route::middleware(['auth'])->group(function () {
     Route::view('dashboard', 'user/dashboard')->name('dashboard');
     Route::resource('artigos', App\Http\Controllers\ArticleController::class);
-    Route::resource('pecas', App\Http\Controllers\PiecesController::class);
+    Route::resource('pecas', App\Http\Controllers\PieceController::class);
 });
 
 Route::view('/', 'public/index');

@@ -55,6 +55,6 @@ class User extends Authenticatable
      */
     public function pieces()
     {
-        return $this->hasMany(Pieces::class);
+        return $this->belongsToMany(Piece::class);
     }
 }

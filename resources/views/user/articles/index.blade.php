@@ -23,8 +23,12 @@
                 </div>
             @endforeach
         </div>
-
-        {{ $articles->links('pagination::bootstrap-4') }}
+        <div class="row">
+            <div class="col-12 mb-3">
+                <p class="text-muted">{{ "Mostrando {$articles->count()} de $articles_total itens." }}</p>
+                {{ $articles->links() }}
+            </div>
+        </div>
     </div>
 @endsection
 

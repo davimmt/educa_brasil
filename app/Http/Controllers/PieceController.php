@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pieces;
+use App\Models\Piece;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 
-class PiecesController extends Controller
+class PieceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,10 @@ class PiecesController extends Controller
      */
     public function index()
     {
-        $pieces = Pieces::paginate(12);
-        return view('user/pieces/index', ['pieces' => $pieces]);
+        $pieces = Piece::simplePaginate(9);
+        $pieces_total = Piece::count();
+
+        return view('user/pieces/index', ['pieces' => $pieces, 'pieces_total' => $pieces_total]);
     }
 
     /**
@@ -40,20 +42,17 @@ class PiecesController extends Controller
     {
         $data = $this->validator($request->all())->validate();
 
-        if (!$request->image) $request->image = 'http://via.placeholder.com/720x400';
-        else $request->image = $request->file('image')->store('storage/images/pieces');
+        if ($request->image) $request->image = $request->file('image')->store('public/images/pieces');
 
-        if (Pieces::create([
+        Piece::create([
             'user_id'     => auth()->id(),
             'image'       => $request->image,
             'title'       => $data['title'],
             'description' => $data['description'],
             'helpers'     => $data['helpers']
-        ])) {
-            return redirect()->back()->with('response', ['success', 'Sucesso!']);
-        }
+        ]);
 
-        return redirect()->back()->with('response', ['danger', 'Error!']);
+        return redirect()->back()->with('response', ['success', 'Sucesso!']);
     }
 
     /**
@@ -64,7 +63,7 @@ class PiecesController extends Controller
      */
     public function show($id)
     {
-        $piece = Pieces::find($id);
+        $piece = Piece::find($id);
         return view('user/pieces/show', ['piece' => $piece]);
     }
 
@@ -76,7 +75,8 @@ class PiecesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $piece = Piece::find($id);
+        return view('user/pieces/edit', ['piece' => $piece]);
     }
 
     /**
@@ -88,7 +88,14 @@ class PiecesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $piece = Piece::find($id);
+
+        if ($request->image) $piece->image = $request->file('image')->store('public/images/pieces');
+        if (is_null($request->update_image)) $piece->image = null;
+        
+        $piece->save();
+
+        return redirect()->back()->with('response', ['success', 'Sucesso!']);
     }
 
     /**
