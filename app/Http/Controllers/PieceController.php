@@ -6,9 +6,22 @@ use App\Models\Piece;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
+
 
 class PieceController extends Controller
 {
+
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('piece.manager')->only(['edit', 'update', 'destroy', 'setManagers']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -107,7 +120,7 @@ class PieceController extends Controller
 
         $piece->save();
 
-        $this->setManagers($data['user_manager'], $id);
+        if (auth()->user()->hasRole('adm')) $this->setManagers($data['user_manager'], $id);
 
         return redirect()->back()->with('response', ['success', 'Sucesso!']);
     }
@@ -149,11 +162,7 @@ class PieceController extends Controller
     public function setManagers(array $data, $id)
     {
         $piece = Piece::find($id);
-        $managers = [];
-
-        foreach ($piece->managers as $item) {
-            $managers[] = $item->id;
-        }
+        $managers = $piece->getManagersId();
 
         if ($data == $managers) return true;
 

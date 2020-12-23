@@ -82,20 +82,22 @@
                     @enderror
                 </div>
 
-                <div class="col-12 mt-2">
-                    <label for="user_manager">Gerente(s)</label><br>
-                    <select id="user_manager" name="user_manager[]" class="select-move @error('user_manager') is-invalid @enderror" multiple>
-                        @foreach ($users as $item)
-                            <option @if (in_array($item->id, $managers)) selected @endif value="{{ $item->id }}">{{ $item->name }}</option>
-                        @endforeach
-                    </select>
+                @if(auth()->user()->can(''))
+                    <div class="col-12 mt-2">
+                        <label for="user_manager">Gerente(s)</label><br>
+                        <select id="user_manager" name="user_manager[]" class="select-move @error('user_manager') is-invalid @enderror" multiple>
+                            @foreach ($users as $item)
+                                <option @if (in_array($item->id, $managers)) selected @endif value="{{ $item->id }}">{{ $item->name }}</option>
+                            @endforeach
+                        </select>
 
-                    @error('user_manager')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
+                        @error('user_manager')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                @endif
 
                 <div class="col-12 mt-2">
                     <button class="btn btn-primary">Salvar</button>

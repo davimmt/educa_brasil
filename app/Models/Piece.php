@@ -62,6 +62,16 @@ class Piece extends Model
         return trim(substr($this->description, 0, 125))."...";
     }
 
+    public function getManagersId() {
+        $managers = [];
+
+        foreach ($this->managers as $item) {
+            $managers[] = $item->id;
+        }
+
+        return $managers;
+    }
+
     public function getCreatedAtAttribute($value) {
         return \Carbon\Carbon::createFromTimestamp(strtotime($value))->timezone('America/Sao_Paulo');
     }

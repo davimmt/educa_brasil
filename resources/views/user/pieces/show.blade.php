@@ -50,14 +50,18 @@
             @endif
         </div>
 
-        <img class="img-responsive mr-3" src="{{ $piece->image == null ? 'http://via.placeholder.com/720x400' : asset($piece->image) }}">
+        @if ($piece->image == null)
+            <i class="fas fa-rocket border-right img-responsive text-center pt-5 text-dark mr-3" style="background-color:rgba(0, 0, 0, 0.1);height:300px;font-size:15em"></i>
+        @else
+            <img class="img-responsive mr-3" src="{{ asset($piece->image) }}">
+        @endif
         <span class="text-muted">Adicionado por {{ $piece->author->name }}</span>
 
         <p class="h5 mt-3 font-weight-bold">Descrição</p>
         <p class="">{!! nl2br($piece->description, false) !!}</p>
 
         @if(($piece->user_is_manager()) || auth()->user()->can(''))
-            <p class="h5 font-weight-bold">Referências</p>
+            <p class="h5 mt-3 font-weight-bold">Referências</p>
             <p class="">{!! nl2br($piece->helpers, false) !!}</p>
         @endif
 

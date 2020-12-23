@@ -22,7 +22,6 @@
             width: 180px;
             height: 130px;
         }
-
         @media only screen and (max-width: 1500px) and (min-width: 1200px){.img-responsive{width:130px;height:110px;}.text-ellipsis-multiline{max-height:2.4em;}}
         @media only screen and (max-width: 900px) {.img-responsive{width:130px;height:110px;}.text-ellipsis-multiline{max-height:2.4em;}}
 
@@ -69,7 +68,11 @@
                         <div class="card overflow-hidden">
                             <div class="card-horizontal">
                                 <div class="img-square-wrapper rounded-circle">
-                                    <img class="img-responsive" src="{{ $item->image == null ? 'http://via.placeholder.com/720x400' : asset($item->image) }}">
+                                    @if ($item->image == null)
+                                        <i class="fas fa-rocket fa-5x p-4 border-right img-responsive text-dark" style="background-color: rgba(0, 0, 0, 0.1)"></i>
+                                    @else
+                                        <img class="img-responsive" src="{{ asset($item->image) }}">
+                                    @endif
                                 </div>
                                 <div class="card-body text-ellipsis">
                                     <p class="h4 card-title text-ellipsis">{{ $item->title }}</p>
