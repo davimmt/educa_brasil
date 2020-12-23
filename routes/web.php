@@ -20,8 +20,12 @@ Auth::routes([
 
 Route::middleware(['auth'])->group(function () {
     Route::view('dashboard', 'user/dashboard')->name('dashboard');
+
     Route::resource('artigos', App\Http\Controllers\ArticleController::class);
+    Route::get('artigos/search', [App\Http\Controllers\ArticleController::class, 'search'])->name('artigos.search');
+
     Route::resource('pecas', App\Http\Controllers\PieceController::class);
+    Route::get('pieces/search/', [App\Http\Controllers\PieceController::class, 'search'])->name('pecas.search');
 });
 
 Route::view('/', 'public/index');

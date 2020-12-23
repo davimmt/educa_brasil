@@ -2,7 +2,18 @@
 
 @section('content')
     <div class="container col-10">
-        <p class="h4 border-bottom">CRIAR PEÇA</p>
+        <ul class="list-unstyled">
+            <li>
+                <small>
+                    <a class="text-muted" href="{{ url('dashboard') }}">Dashboard</a> >
+                    <a class="text-muted" href="{{ url('pecas') }}">Lista de Peças</a> >
+                    <a class="text-muted" href="{{ url()->current() }}">Criar Peça</a>
+                </small>
+            </li>
+            <li>
+                <p class="h4 border-bottom font-weight-bold pb-2">CRIAR PEÇA</p>
+            </li>
+        </ul>
         @if (session('response'))
             <div class="alert alert-{{ session('response')[0] }} alert-dismissible fade show mb-1" role="alert">
                 {{ session('response')[1] }}

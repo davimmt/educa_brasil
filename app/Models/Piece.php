@@ -58,6 +58,10 @@ class Piece extends Model
         return str_replace('public', 'storage', $value);
     }
 
+    public function getEllipsisDescription() {
+        return trim(substr($this->description, 0, 125))."...";
+    }
+
     public function getCreatedAtAttribute($value) {
         return \Carbon\Carbon::createFromTimestamp(strtotime($value))->timezone('America/Sao_Paulo');
     }

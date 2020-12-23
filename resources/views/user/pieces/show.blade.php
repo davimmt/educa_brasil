@@ -14,19 +14,35 @@
                 float: none;
             }
         }
+        @media only screen and (max-width: 450px) {
+            .piece-title {
+                margin-bottom: 40px
+            }
+        }
     </style>
 @endsection
 
 @section('content')
     <div class="container col-10">
         <div class="border-bottom mb-4 position-relative">
-            <p class="h1">{{ $piece->title }}</p>
+            <ul class="list-unstyled">
+                <li>
+                    <small>
+                        <a class="text-muted" href="{{ url('dashboard') }}">Dashboard</a> >
+                        <a class="text-muted" href="{{ url('pecas') }}">Lista de Peças</a> >
+                        <a class="text-muted" href="{{ url()->current() }}">Peça #{{ $piece->id }}</a>
+                    </small>
+                </li>
+                <li>
+                    <p class="piece-title h1">{{ $piece->title }}</p>
+                </li>
+            </ul>
             @if(($piece->user_is_manager()) || auth()->user()->can(''))
                 <p class="text-muted position-absolute" style="bottom: -10px; right: 0;">
-                    <a href="{{ route('pecas.edit', $piece->id) }}" class="btn btn-primary btn-sm ml-5"><i class="fas fa-edit mr-1"></i>Editar</a>
+                    <a href="{{ route('pecas.edit', $piece->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit mr-1"></i>Editar</a>
                     <a href="#" class="btn btn-dark btn-sm"><i class="fas fa-eye-slash mr-1"></i>Ocultar</a>
                     @if(auth()->user()->can(''))
-                        <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash mr-1"></i>Excluir</a>
+                        <a href="{{ route('pecas.destroy', $piece->id) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash mr-1"></i>Excluir</a>
                     @endif
                 </p>
             @endif
