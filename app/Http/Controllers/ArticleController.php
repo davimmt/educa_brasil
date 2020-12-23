@@ -16,7 +16,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::simplePaginate(15);
+        $articles = Article::latest()->simplePaginate(18);
         $articles_total = Article::count();
         
         return view('user/articles/index', ['articles' => $articles, 'articles_total' => $articles_total]);
@@ -97,6 +97,21 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Search the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        $search = Article::where('title', 'LIKE', '%'.$request->title.'%');
+        $articles_total = $search->count();
+        $articles = $search->latest()->simplePaginate(18)->withPath('?title='.$request->title);
+
+        return view('user/articles/index', ['articles' => $articles, 'articles_total' => $articles_total]);
     }
 
     /**

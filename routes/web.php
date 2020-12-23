@@ -22,10 +22,10 @@ Route::middleware(['auth'])->group(function () {
     Route::view('dashboard', 'user/dashboard')->name('dashboard');
 
     Route::resource('artigos', App\Http\Controllers\ArticleController::class);
-    Route::get('artigos/search', [App\Http\Controllers\ArticleController::class, 'search'])->name('artigos.search');
+    Route::get('search/artigos', [App\Http\Controllers\ArticleController::class, 'search'])->name('search.user.artigos');
 
     Route::resource('pecas', App\Http\Controllers\PieceController::class);
-    Route::get('pieces/search/', [App\Http\Controllers\PieceController::class, 'search'])->name('pecas.search');
+    Route::get('search/pecas', [App\Http\Controllers\PieceController::class, 'search'])->name('search.user.pecas');
 });
 
 Route::view('/', 'public/index');

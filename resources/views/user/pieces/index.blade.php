@@ -52,7 +52,7 @@
             </div>
             <div class="col-xl-6 col-md-8 col-sm-12 d-flex align-items-center p-0 mt-2">
                 <div class="input-group">
-                    <form id="pecas-search" method="GET" action="{{ route('pecas.search') }}">@csrf</form>
+                    <form id="pecas-search" method="GET" action="{{ route('search.user.pecas') }}">@csrf</form>
                     <input name="title" class="form-control" placeholder="Título..." form="pecas-search" autocomplete="off">
                     <div class="input-group-append">
                         <button class="btn btn-outline-primary btn-sm" form="pecas-search"><i class="fas fa-search mr-1"></i>Procurar</button>
@@ -86,7 +86,7 @@
         </div>
         <div class="row">
             <div class="col-12 mb-3">
-                <p class="text-muted">{{ "Mostrando de {$pieces->firstItem()} a  {$pieces->lastItem()} de $pieces_total itens." }}</p>
+                <p class="text-muted">{{ "Mostrando de {$pieces->firstItem()} a {$pieces->lastItem()} de $pieces_total itens." }}</p>
                 {{ $pieces->links() }}
             </div>
         </div>

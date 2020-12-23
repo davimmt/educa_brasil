@@ -18,6 +18,7 @@
     @yield('head-end')
 </head>
 <body>
+    @yield('body-start')
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">

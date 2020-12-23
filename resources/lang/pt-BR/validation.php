@@ -158,13 +158,15 @@ return [
     */
     'required' => 'Este campo é obrigatório.',
     'unique'   => 'Esta informação já está sendo utilizada.',
+    'array'    => 'Este campo deve ser uma matriz.',
     'between'  => [
         'string' => 'Este campo deve ser entre :min e :max caracteres.',
     ],
     'max' => [
         'string' => 'Este campo não pode ser superior a :max caracteres.',
+        'array'  => 'Este campo não pode ter mais que :max itens.',
     ],
     'min' => [
         'string' => 'Este campo deve ter pelo menos :min caracteres.',
-    ]
+    ],
 ];

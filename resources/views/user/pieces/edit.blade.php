@@ -1,5 +1,14 @@
 @extends('layouts.user')
 
+@section('head-end')
+    <link href="{{ asset('assets/_tail.select/css/bootstrap4/tail.select-default.css') }}" rel="stylesheet">
+@endsection
+
+@section('body-start')
+    <script src="{{ asset('assets/_tail.select/js/tail.select.js') }}"></script>
+    <script src="{{ asset('assets/_tail.select/langs/tail.select-pt_BR.js') }}"></script>
+@endsection
+
 @section('content')
     <div class="container col-10">
         <ul class="list-unstyled">
@@ -27,7 +36,7 @@
         @method('PUT')
         @csrf
             <div class="row">
-                <div class="col-6 mt-2">
+                <div class="col-xl-6 col-sm-12 mt-2">
                     <label for="title">Título</label>
                     <input id="title" name="title" class="form-control @error('title') is-invalid @enderror" autocomplete="off" value="{{ old('title') ?: $piece->title }}">
 
@@ -37,7 +46,7 @@
                         </span>
                     @enderror
                 </div>
-                <div class="col-6 mt-2">
+                <div class="col-xl-6 col-sm-12 mt-2">
                     <div class="form-check form-check-inline mt-2">
                         <input class="form-check-input" type="radio" name="update_image" id="keep_image" value="0" checked>
                         <label class="form-check-label" for="keep_image">Manter imagem</label>
@@ -50,7 +59,7 @@
                         <input class="form-check-input" type="radio" name="update_image" id="update_image" value="1">
                         <label class="form-check-label" for="update_image">Alterar imagem</label>
                     </div>
-                    <input type="file" id="image" name="image" class="form-control-file mt-1" disabled>
+                    <input type="file" id="image" name="image" class="form-control-file mt-1" accept="image/*" style="font-size: .8em" disabled>
                 </div>
                 <div class="col-12 mt-2">
                     <label for="description">Descrição</label>
@@ -67,6 +76,21 @@
                     <textarea id="helpers" name="helpers" rows="5" class="form-control @error('helpers') is-invalid @enderror">{{ old('helpers') ?: $piece->helpers }}</textarea>
 
                     @error('helpers')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="col-12 mt-2">
+                    <label for="user_manager">Gerente(s)</label><br>
+                    <select id="user_manager" name="user_manager[]" class="select-move @error('user_manager') is-invalid @enderror" multiple>
+                        @foreach ($users as $item)
+                            <option @if (in_array($item->id, $managers)) selected @endif value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+                    </select>
+
+                    @error('user_manager')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -91,6 +115,21 @@
             else {
                 $('#image').attr('disabled', false);
             }
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            tail.select(".select-move", {
+                search: true,
+                hideSelected: true,
+                multiShowCount: false,
+                multiSelectAll: true,
+                multiSelectNone: true,
+                multiContainer: true,
+                multiLimit: 2,
+                locale: "pt_BR",
+                width: "100%",
+            });
         });
     </script>
 @endsection

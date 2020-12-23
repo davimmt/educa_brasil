@@ -25,7 +25,7 @@
         <form method="POST" action="{{ route('pecas.store') }}" enctype="multipart/form-data">
         @csrf
             <div class="row">
-                <div class="col-6 mt-2">
+                <div class="col-xl-6 col-sm-12 mt-2">
                     <label for="title">Título</label>
                     <input id="title" name="title" class="form-control @error('title') is-invalid @enderror" autocomplete="off" value="{{ old('title') }}">
 
@@ -35,9 +35,9 @@
                         </span>
                     @enderror
                 </div>
-                <div class="col-6 mt-2">
+                <div class="col-xl-6 col-sm-12 mt-2">
                     <label for="image">Imagem</label>
-                    <input type="file" id="image" name="image" class="form-control-file">
+                    <input type="file" id="image" name="image" class="form-control-file mt-1" style="font-size: .8em" accept="image/*">
                 </div>
                 <div class="col-12 mt-2">
                     <label for="description">Descrição</label>
