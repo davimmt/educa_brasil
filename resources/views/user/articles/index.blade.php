@@ -19,7 +19,7 @@
             </div>
             <div class="col-xl-6 col-md-8 col-sm-12 d-flex align-items-center p-0 mt-2">
                 <div class="input-group">
-                    <form id="artigos-search" method="GET" action="{{ route('search.user.artigos') }}">@csrf</form>
+                    <form id="artigos-search" method="GET" action="{{ route('search.artigos') }}">@csrf</form>
                     <input name="title" class="form-control" placeholder="Título..." form="artigos-search" autocomplete="off">
                     <div class="input-group-append">
                         <button class="btn btn-outline-primary btn-sm" form="artigos-search"><i class="fas fa-search mr-1"></i>Procurar</button>

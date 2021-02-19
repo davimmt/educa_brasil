@@ -24,6 +24,9 @@ class Client extends Model
         'updated_at'
     ];
 
+    /**
+     * Change timezone to match local.
+     */
     public function getCreatedAtAttribute($value) {
         return \Carbon\Carbon::createFromTimestamp(strtotime($value))->timezone('America/Sao_Paulo');
     }

@@ -30,6 +30,9 @@ class Article extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    /**
+     * Change timezone to match local.
+     */
     public function getCreatedAtAttribute($value) {
         return \Carbon\Carbon::createFromTimestamp(strtotime($value))->timezone('America/Sao_Paulo');
     }

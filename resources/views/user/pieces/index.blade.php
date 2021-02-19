@@ -1,35 +1,7 @@
 @extends('layouts.user')
 
 @section('head-end')
-    <style>
-        .card-horizontal {
-            display: flex;
-            flex: 1 1 auto;
-        }
-        .card-footer {
-            padding: .1em .5em;
-            text-align: right;
-            font-size: .8em;
-        }
-        .text-ellipsis-multiline {
-            overflow: hidden;
-            /* use this value to count block height */
-            line-height: 1.2em;
-            /* max-height = line-height (1.2) * lines max number (3) */
-            max-height: 3.6em; 
-        }
-        .img-responsive {
-            width: 180px;
-            height: 130px;
-        }
-        @media only screen and (max-width: 1500px) and (min-width: 1200px){.img-responsive{width:130px;height:110px;}.text-ellipsis-multiline{max-height:2.4em;}}
-        @media only screen and (max-width: 900px) {.img-responsive{width:130px;height:110px;}.text-ellipsis-multiline{max-height:2.4em;}}
-
-        @media only screen and (max-width: 1700px) and (min-width: 1500px){.text-ellipsis{text-overflow:ellipsis;white-space: nowrap;overflow: hidden;}}
-        @media only screen and (max-width: 1405px) and (min-width: 1200px){.text-ellipsis{text-overflow:ellipsis;white-space: nowrap;overflow: hidden;}}
-        @media only screen and (max-width: 960px) and (min-width: 765px){.text-ellipsis {text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}}
-        @media only screen and (max-width: 500px) {.text-ellipsis {text-overflow: ellipsis;    white-space: nowrap;    overflow: hidden;}}
-    </style>
+    <link href="{{ asset('assets/custom.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -51,7 +23,7 @@
             </div>
             <div class="col-xl-6 col-md-8 col-sm-12 d-flex align-items-center p-0 mt-2">
                 <div class="input-group">
-                    <form id="pecas-search" method="GET" action="{{ route('search.user.pecas') }}">@csrf</form>
+                    <form id="pecas-search" method="GET" action="{{ route('search.pecas') }}">@csrf</form>
                     <input name="title" class="form-control" placeholder="Título..." form="pecas-search" autocomplete="off">
                     <div class="input-group-append">
                         <button class="btn btn-outline-primary btn-sm" form="pecas-search"><i class="fas fa-search mr-1"></i>Procurar</button>
@@ -61,6 +33,15 @@
             </div>
         </div>
         
+        @if (session('response'))
+            <div class="alert alert-{{ session('response')[0] }} alert-dismissible fade show mb-1" role="alert">
+                {{ session('response')[1] }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+
         <div class="row mt-3">
             @foreach ($pieces as $item)
                 <div class="col-xl-4 col-md-6 col-sm-12 mb-3">

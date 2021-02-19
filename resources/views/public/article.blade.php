@@ -124,14 +124,6 @@
     </div>
   </header>
 
-  <!-- Location Section -->
-  <section class="page-section bg-dark text-white" id="location">
-    <div class="container text-center">
-      <h2 class="mt-0">Nossa localização:</h2>
-      <div id="map" style="width:100%; height:400px"></div>
-    </div>
-  </section>
-
   <!-- Contact Section -->
   <section class="page-section" id="contact">
     <div class="container">

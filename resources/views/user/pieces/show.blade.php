@@ -44,7 +44,9 @@
                     <a href="{{ route('pecas.edit', $piece->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit mr-1"></i>Editar</a>
                     <a href="#confirmAlertModal" data-toggle="modal" class="btn btn-dark btn-sm"><i class="fas fa-eye-slash mr-1"></i>Ocultar</a>
                     @if(auth()->user()->can(''))
-                        <a href="#confirmDangerModal" data-toggle="modal" class="btn btn-danger btn-sm"><i class="fas fa-trash mr-1"></i>Excluir</a>
+                        <a id="linkConfirmDangerModal" href="#confirmDangerModal" data-toggle="modal" class="btn btn-danger btn-sm" 
+                        onclick="confirmDangerModalForm('{{ route('pecas.destroy', $piece->id) }}')">
+                        <i class="fas fa-trash mr-1"></i>Excluir</a>
                     @endif
                 </p>
             @endif
@@ -79,4 +81,10 @@
 @endsection
 
 @section('body-end')
+    <script>
+        function confirmDangerModalForm(action) {
+            form = document.getElementById("confirmDangerModalForm");
+            form.action = action;
+        }
+    </script>
 @endsection

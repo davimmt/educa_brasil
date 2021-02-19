@@ -15,9 +15,10 @@
 					<p class="text-muted text-center mb-0">Essa ação <strong>não</strong> é reversível.</p>
 				</div>
 			</div>
+			<form id="confirmDangerModalForm" method="POST" action="">@csrf @method('DELETE')</form>
 			<div class="modal-footer border-0">
 				<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Fechar</button>
-				<button class="btn btn-danger btn-sm">Continuar</button>
+				<button class="btn btn-danger btn-sm" form="confirmDangerModalForm">Continuar</button>
 			</div>
 		</div>
 	</div>

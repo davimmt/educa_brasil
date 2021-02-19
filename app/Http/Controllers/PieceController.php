@@ -8,7 +8,6 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
-
 class PieceController extends Controller
 {
 
@@ -133,9 +132,12 @@ class PieceController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
         Piece::destroy($id);
-        return $this->index();
+        
+        $pieces = Piece::latest()->simplePaginate(12);
+        $pieces_total = Piece::count();
+
+        return redirect()->route('pecas.index', ['pieces' => $pieces, 'pieces_total' => $pieces_total])->with('response', ['success', 'Sucesso!']);
     }
 
     /**

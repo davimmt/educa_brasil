@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>Feira de Ciências</title>
+  <title>Educa Brasil</title>
 
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/startbootstrap-creative/styles.css') }}">
@@ -38,8 +38,8 @@
             <a class="nav-link dropdown-toggle pl-1" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
 
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#" style="font-size: 13px">Artigos</a>
-              <a class="dropdown-item" href="#" style="font-size: 13px">Peças</a>
+              <a class="dropdown-item" href="{{ url('p/artigos') }}" style="font-size: 13px">Artigos</a>
+              <a class="dropdown-item" href="{{ url('p/pecas') }}" style="font-size: 13px">Peças</a>
             </div>
           </li>
           <li class="nav-item">
@@ -60,7 +60,7 @@
   </nav>
 
   <!-- Masthead -->
-  <header class="masthead">
+  <header class="masthead bg-img-00rocket-launch">
     <div class="container h-100">
       <div class="row h-100 align-items-center justify-content-center text-center">
         <div class="col-lg-10 align-self-end">
@@ -265,7 +265,7 @@
   <!-- Footer -->
   <footer class="bg-light py-5">
     <div class="container">
-      <div class="small text-center text-muted">Copyright &copy; 2019 - Start Bootstrap</div>
+      <div class="small text-center text-muted">Copyright &copy; {{ date('Y') }} - {{ config('app.name', 'EDUCA Brasil') }}/div>
     </div>
   </footer>
   

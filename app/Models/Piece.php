@@ -62,6 +62,9 @@ class Piece extends Model
         return trim(substr($this->description, 0, 125))."...";
     }
 
+    /**
+     * Get all id's from managers.
+     */
     public function getManagersId() {
         $managers = [];
 
@@ -72,6 +75,9 @@ class Piece extends Model
         return $managers;
     }
 
+    /**
+     * Change timezone to match local.
+     */
     public function getCreatedAtAttribute($value) {
         return \Carbon\Carbon::createFromTimestamp(strtotime($value))->timezone('America/Sao_Paulo');
     }
