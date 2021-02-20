@@ -17,7 +17,7 @@
                     <a class="text-muted" href="{{ url('dashboard') }}">Dashboard</a> >
                     <a class="text-muted" href="{{ url('pecas') }}">Lista de Peças</a> >
                     <a class="text-muted" href="{{ url("pecas/$piece->id") }}">Peça #{{ $piece->id }}</a> >
-                    <a class="text-muted" href="{{ url()->current() }}">Editar Peça</a>
+                    <span class="text-muted">Editar Peça</span>
                 </small>
             </li>
             <li>

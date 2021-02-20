@@ -245,7 +245,7 @@
         <div class="col-lg-8 text-center">
           <h2 class="mt-0">Entre em contato conosco!</h2>
           <hr class="divider my-4">
-          <p class="text-muted mb-5">Se você estiver com dúvidas ou quiser participar ativamente do nosso projeto,<br> sinta-se à vontade para nos charmar!</p>
+          <p class="text-muted mb-5">Se você estiver com dúvidas ou quiser participar ativamente do nosso projeto,<br> sinta-se à vontade para nos chamar!</p>
         </div>
       </div>
       <div class="row">

@@ -8,11 +8,11 @@
 
   <title>Peças — Educa Brasil</title>
 
+  <link rel="stylesheet" href="{{ asset('assets/custom.css') }}">
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/startbootstrap-creative/styles.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/startbootstrap-creative/custom-styles.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/magnific-popup/styles.css') }}">
-  <link rel="stylesheet" href="{{ asset('assets/custom.css') }}">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
@@ -31,8 +31,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto my-2 my-lg-0">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="{{ url('/') }}#about">Sobre o projeto</a>
+          <li class="nav-item btn-group">
+            <a class="nav-link js-scroll-trigger pr-1" href="#about">Sobre o projeto</a>
+            <a class="nav-link dropdown-toggle pl-1" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="{{ url('p/artigos') }}" style="font-size: 13px">Artigos</a>
+              <a class="dropdown-item" href="{{ url('p/pecas') }}" style="font-size: 13px">Peças</a>
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#contact">Contato</a>
@@ -43,14 +49,14 @@
   </nav>
 
   <!-- Masthead -->
-  <header class="masthead bg-img-optic_physics" style="height: 55vh; min-height: 55vh; background-position: 1% 50%">
+  <header class="masthead masthead-secondary bg-img-optic_physics" style="background-position: 1% 50%">
     <div class="container h-100">
       <div class="row h-100 align-items-center justify-content-center text-center">
         <div class="col-lg-10 align-self-end">
           <h1 class="text-uppercase text-white font-weight-bold">Quer saber o que temos a oferecer?</h1>
           <hr class="divider my-4">
         </div>
-        <div class="col-lg-8 col-md-9 col-sm-9 col-9 align-self-baseline">
+        <div class="col-lg-8 col-md-9 col-sm-9 align-self-baseline">
           <p class="text-white-75 font-weight-light mb-5">Veja abaixo nossa coleção de peças, feitas à mão, com cuidado especial,<br> para seu melhor aprendizado!</p>
         </div>
       </div>
@@ -59,9 +65,9 @@
 
   <!-- Articles -->
   <section class="page-section bg-primary" id="about">
-    <div class="container col-8">
+    <div class="container col-lg-10 col-sm-12">
       <div class="row justify-content-center">
-        <div class="col-lg-12 col-md-12 col-sm-9 col-9 text-center">
+        <div class="col-lg-12 col-md-12 col-sm-12 text-left">
           <div class="input-group">
             <form id="pecas-search" method="GET" action="{{ route('search.pecas') }}">@csrf</form>
             <input name="title" class="form-control" placeholder="Título..." form="pecas-search" autocomplete="off">
@@ -71,26 +77,23 @@
           </div>
           <div class="row mt-3">
             @foreach ($pieces as $item)
-                <div class="col-xl-4 col-md-6 col-sm-12 mb-3">
-                    <a style="text-decoration: none" href="{{ route('pecas.show', $item->id) }}">
-                        <div class="card overflow-hidden">
-                            <div class="card-horizontal">
-                                <div class="img-square-wrapper rounded-circle">
-                                    @if ($item->image == null)
-                                        <i class="fas fa-rocket fa-5x p-4 border-right img-responsive text-dark" style="background-color: rgba(0, 0, 0, 0.1)"></i>
-                                    @else
-                                        <img class="img-responsive" src="{{ asset($item->image) }}">
-                                    @endif
-                                </div>
-                                <div class="card-body text-ellipsis">
-                                    <p class="h4 card-title text-ellipsis">{{ $item->title }}</p>
-                                    <p class="card-text text-ellipsis text-ellipsis-multiline text-muted" style="font-size: .8rem">{{ $item->getEllipsisDescription() }}</p>
-                                </div>
+                <div class="col-xl-6 col-md-6 col-sm-12 mb-3">
+                    <a style="text-decoration: none" href="{{ route('p.pecas.show', $item->id) }}">
+                      <div class="card overflow-hidden">
+                        <div class="card-horizontal">
+                            <div class="img-square-wrapper rounded-circle">
+                                @if ($item->image == null)
+                                    <i class="fas fa-rocket fa-5x p-4 border-right img-responsive text-dark" style="background-color: rgba(0, 0, 0, 0.1)"></i>
+                                @else
+                                    <img class="img-responsive" src="{{ asset($item->image) }}">
+                                @endif
                             </div>
-                            <div class="card-footer">
-                                <small class="text-muted">{{ $item->author->name }} — {{ $item->created_at }}</small>
+                            <div class="card-body text-ellipsis">
+                                <p class="h4 card-title text-ellipsis">{{ $item->title }}</p>
+                                <p class="card-text text-ellipsis text-ellipsis-multiline text-muted" style="font-size: .8rem">{{ $item->getEllipsisDescription() }}</p>
                             </div>
                         </div>
+                      </div>
                     </a>
                 </div>
               @endforeach
@@ -114,7 +117,7 @@
         <div class="col-lg-8 text-center">
           <h2 class="mt-0">Entre em contato conosco!</h2>
           <hr class="divider my-4">
-          <p class="text-muted mb-5">Se você estiver com dúvidas ou quiser participar ativamente do nosso projeto,<br> sinta-se à vontade para nos charmar!</p>
+          <p class="text-muted mb-5">Se você estiver com dúvidas ou quiser participar ativamente do nosso projeto,<br> sinta-se à vontade para nos chamar!</p>
         </div>
       </div>
       <div class="row">

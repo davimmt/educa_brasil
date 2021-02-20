@@ -29,8 +29,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto my-2 my-lg-0">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="{{ url('/') }}#about">Sobre o projeto</a>
+          <li class="nav-item btn-group">
+            <a class="nav-link js-scroll-trigger pr-1" href="#about">Sobre o projeto</a>
+            <a class="nav-link dropdown-toggle pl-1" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="{{ url('p/artigos') }}" style="font-size: 13px">Artigos</a>
+              <a class="dropdown-item" href="{{ url('p/pecas') }}" style="font-size: 13px">Peças</a>
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#location">Como chegar?</a>
@@ -139,7 +145,7 @@
         <div class="col-lg-8 text-center">
           <h2 class="mt-0">Entre em contato conosco!</h2>
           <hr class="divider my-4">
-          <p class="text-muted mb-5">Se você estiver com dúvidas ou quiser participar ativamente do nosso projeto,<br> sinta-se à vontade para nos charmar!</p>
+          <p class="text-muted mb-5">Se você estiver com dúvidas ou quiser participar ativamente do nosso projeto,<br> sinta-se à vontade para nos chamar!</p>
         </div>
       </div>
       <div class="row">

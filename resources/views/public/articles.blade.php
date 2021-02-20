@@ -30,8 +30,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto my-2 my-lg-0">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="{{ url('/') }}#about">Sobre o projeto</a>
+          <li class="nav-item btn-group">
+            <a class="nav-link js-scroll-trigger pr-1" href="#about">Sobre o projeto</a>
+            <a class="nav-link dropdown-toggle pl-1" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="{{ url('p/artigos') }}" style="font-size: 13px">Artigos</a>
+              <a class="dropdown-item" href="{{ url('p/pecas') }}" style="font-size: 13px">Peças</a>
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#contact">Contato</a>
@@ -42,7 +48,7 @@
   </nav>
 
   <!-- Masthead -->
-  <header class="masthead bg-img-newtonian-balls" style="height: 55vh; min-height: 55vh; background-position: 1% 75%">
+  <header class="masthead masthead-secondary bg-img-newtonian-balls" style="background-position: 1% 75%">
     <div class="container h-100">
       <div class="row h-100 align-items-center justify-content-center text-center">
         <div class="col-lg-10 align-self-end">
@@ -57,35 +63,36 @@
   </header>
 
   <!-- Articles -->
-  <section class="page-section bg-primary" id="about">
-    <div class="container col-8">
+  <section class="page-section bg-primary" id="article-list">
+    <div class="container col-md-10 col-sm-12">
       <div class="row justify-content-center">
-        <div class="col-lg-12 col-md-12 col-sm-9 col-9 text-center">
+        <div class="col-lg-12 col-md-12 col-sm-9">
           <div class="row container-fluid p-0 m-0">
               <div class="col-xl-12 col-md-12 col-sm-12 d-flex align-items-center p-0 mt-2">
-                  <div class="input-group">
-                      <form id="artigos-search" method="GET" action="{{ route('p.search.artigos') }}">@csrf</form>
-                      <input name="title" class="form-control" placeholder="Título..." form="artigos-search" autocomplete="off">
-                      <div class="input-group-append">
-                          <button class="btn btn-light btn-sm" form="artigos-search"><i class="fas fa-search"></i>Procurar</button>
-                      </div>
-                  </div>
+                <div class="input-group">
+                    <form id="artigos-search" method="GET" action="{{ route('p.search.artigos') }}">@csrf</form>
+                    <input name="title" class="form-control" placeholder="Título..." form="artigos-search" autocomplete="off">
+                    <div class="input-group-append">
+                      <button class="btn btn-light btn-sm" form="artigos-search"><i class="fas fa-search mr-2"></i>Procurar</button>
+                    </div>
+                </div>
               </div>
           </div>
           <div class="row mt-3">
               @foreach ($articles as $item)
-                  <div class="col-xl-4 col-md-6 col-sm-12 mb-3">
-                      <a class="text-decoration-none" href="{{ route('p.artigos.show', $item->id) }}">
-                          <div class="card">
-                              <div class="card-body pt-3 pb-1 px-3">
-                                  <p class="h5 card-title">{{ $item->title }}</p>
-                                  <p class="card-subtitle text-muted m-0 p-0 float-right" style="font-size: 10px">{{ $item->author->name }}</p>
-                                  <br>
-                                  <p class="card-subtitle text-muted float-right" style="font-size: 10px">{{ $item->created_at }}</p>
-                              </div>
-                          </div>
-                      </a>
-                  </div>
+                <div class="col-xl-6 col-md-6 col-sm-12 mb-3">
+                  <a class="text-decoration-none" href="{{ route('p.artigos.show', $item->id) }}">
+                    <div class="article-list card">
+                      <div class="card-body pt-3 pb-1 px-3">
+                        <p class="h5 card-title">{{ $item->title }}</p>
+                        <p class="card-subtitle">
+                          Autor: {{ $item->author->name }}<br>
+                          {{ date('d/m/Y', strtotime($item->created_at)) }}
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
               @endforeach
           </div>
           <div class="row">
@@ -106,7 +113,7 @@
         <div class="col-lg-8 text-center">
           <h2 class="mt-0">Entre em contato conosco!</h2>
           <hr class="divider my-4">
-          <p class="text-muted mb-5">Se você estiver com dúvidas ou quiser participar ativamente do nosso projeto,<br> sinta-se à vontade para nos charmar!</p>
+          <p class="text-muted mb-5">Se você estiver com dúvidas ou quiser participar ativamente do nosso projeto,<br> sinta-se à vontade para nos chamar!</p>
         </div>
       </div>
       <div class="row">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -73,7 +74,8 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $article = Article::find($id);
+        return view('user/articles/edit', ['article' => $article]);
     }
 
     /**
@@ -85,7 +87,14 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $article = Article::find($id);
+        $data = $this->validator($request->all() + ['id' => $id])->validate();
+
+        $article->title == $data['title'];
+        $article->content = $data['content'];
+        $article->save();
+
+        return redirect()->back()->with('response', ['success', 'Sucesso!']);
     }
 
     /**
@@ -96,7 +105,12 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Article::destroy($id);
+        
+        $articles = Article::latest()->simplePaginate(12);
+        $articles_total = Article::count();
+
+        return redirect()->route('articles.index', ['articles' => $articles, 'articles_total' => $articles_total])->with('response', ['success', 'Sucesso!']);
     }
 
     /**
@@ -122,6 +136,13 @@ class ArticleController extends Controller
      */
     protected function validator(array $data)
     {
+        if (array_key_exists('id', $data)) {
+            return Validator::make($data, [
+                'title'   => ['required', 'string', 'max:50', Rule::unique('articles')->where('id', '<>', $data['id'])],
+                'content' => ['required', 'string', Rule::unique('articles')->where('id', '<>', $data['id'])]
+            ]);
+        }
+
         return Validator::make($data, [
             'title'   => ['required', 'string', 'max:50', 'unique:articles'],
             'content' => ['required', 'string', 'unique:articles']
