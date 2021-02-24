@@ -1,11 +1,4 @@
-header.masthead {
-  padding-top: 10rem;
-  padding-bottom: calc(10rem - 72px);
-  background-position: 50% 30%;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size: cover;
-}
+@media only screen and (min-width: 767px){header.masthead {height: 100vh}}
 
 header.masthead-secondary {
     height: 55vh; 
@@ -14,30 +7,6 @@ header.masthead-secondary {
 
 .article-text {
     font-size: 20px;
-}
-
-.bg-img-00rocket-launch {
-    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../img/00rocket_launch.jpg");
-}
-
-.bg-img-01rocket-launch {
-    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../img/01rocket_launch.jpg");
-}
-
-.bg-img-newtonian-balls {
-    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../img/newtonian_balls.jpg");
-}
-
-.bg-img-optic_physics {
-    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../img/optic_physics.jpg");
-}
-
-.bg-img-manuscrito {
-    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../img/manuscrito.jpg");
-}
-
-.bg-img-equipaments {
-    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../img/equipaments.jpg");
 }
 
 .btn-group > .dropdown-toggle:focus {

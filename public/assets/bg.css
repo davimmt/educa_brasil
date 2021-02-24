@@ -1,0 +1,27 @@
+.bg-img-00rocket-launch {
+    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("img/00rocket_launch.jpg");
+}
+
+.bg-img-01rocket-launch {
+    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("img/01rocket_launch.jpg");
+}
+
+.bg-img-newtonian-balls {
+    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("img/newtonian_balls.jpg");
+}
+
+.bg-img-optic_physics {
+    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("img/optic_physics.jpg");
+}
+
+.bg-img-manuscrito {
+    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("img/manuscrito.jpg");
+}
+
+.bg-img-equipaments {
+    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("img/equipaments.jpg");
+}
+
+.bg-img-outer-space {
+    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("img/outer_space.jpg");
+}

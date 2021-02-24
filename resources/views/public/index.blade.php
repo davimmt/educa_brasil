@@ -10,6 +10,7 @@
 
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/startbootstrap-creative/styles.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/bg.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/startbootstrap-creative/custom-styles.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/magnific-popup/styles.css') }}">
 
@@ -33,14 +34,8 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto my-2 my-lg-0">
-          <li class="nav-item btn-group">
-            <a class="nav-link js-scroll-trigger pr-1" href="#about">Sobre o projeto</a>
-            <a class="nav-link dropdown-toggle pl-1" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="{{ url('p/artigos') }}" style="font-size: 13px">Artigos</a>
-              <a class="dropdown-item" href="{{ url('p/pecas') }}" style="font-size: 13px">Peças</a>
-            </div>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger pr-1" href="#about">Saiba mais</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#portfolio">Portfólio</a>
@@ -50,6 +45,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#contact">Contato</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger nav-link-important" href="{{ url('sobre') }}">Sobre o projeto</a>
           </li>
           <li class="nav-item">
             <a id="nav-link-register" class="nav-link js-scroll-trigger nav-link-important" href="{{ url('cadastro') }}">Cadastrar-se</a>
@@ -70,7 +68,7 @@
         </div>
         <div class="col-lg-8 col-md-9 col-sm-9 col-9 align-self-baseline">
           <p class="text-white-75 font-weight-light mb-5">Seja muito bem-vindo ao espaço da nossa primeria feira de ciências!<br> <a href="{{ url('cadastro') }}">Cadastre-se</a> agora para garantir sua presença no nosso envento*: é <u>gratuito</u> e você ainda concorre a um <u>telescópio</u>!</p>
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Saber mais</a>
+          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Saiba mais</a>
           <p class="small text-white-75 font-weight-light mt-5" style="font-size: 15px">*O cadastro não é obrigatório para entrar no evento, mas lhe garante prioridade na fila de entrada.</p>
         </div>
       </div>
@@ -265,7 +263,7 @@
   <!-- Footer -->
   <footer class="bg-light py-5">
     <div class="container">
-      <div class="small text-center text-muted">Copyright &copy; {{ date('Y') }} - {{ config('app.name', 'EDUCA Brasil') }}/div>
+      <div class="small text-center text-muted">Copyright &copy; {{ date('Y') }} - {{ config('app.name', 'EDUCA Brasil') }}</div>
     </div>
   </footer>
   

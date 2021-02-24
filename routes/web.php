@@ -29,6 +29,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::view('/', 'public/index');
+Route::view('sobre', 'public/sobre');
 Route::view('cadastro', 'public/cadastro');
 Route::post('sing-up', [App\Http\Controllers\ClientController::class, 'create']);
 

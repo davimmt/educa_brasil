@@ -29,20 +29,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto my-2 my-lg-0">
-          <li class="nav-item btn-group">
-            <a class="nav-link js-scroll-trigger pr-1" href="#about">Sobre o projeto</a>
-            <a class="nav-link dropdown-toggle pl-1" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="{{ url('p/artigos') }}" style="font-size: 13px">Artigos</a>
-              <a class="dropdown-item" href="{{ url('p/pecas') }}" style="font-size: 13px">Peças</a>
-            </div>
-          </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#location">Como chegar?</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#contact">Contato</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger pr-1" href="{{ url('sobre') }}">Sobre o projeto</a>
           </li>
         </ul>
       </div>
