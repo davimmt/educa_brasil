@@ -28,6 +28,7 @@
                     <div class="input-group-append">
                         <button class="btn btn-outline-primary btn-sm" form="pecas-search"><i class="fas fa-search mr-1"></i>Procurar</button>
                         <a class="btn btn-outline-primary btn-sm align-self-center" style="padding: .677em .5em" href="{{ route('pecas.create') }}"><i class="fas fa-plus mr-1"></i>Novo</a>
+                        <button class="btn btn-outline-primary"><i class="fas fa-filter mr-1"></i>Minhas peças</button>
                     </div>
                 </div>
             </div>

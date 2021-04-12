@@ -28,9 +28,6 @@
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-    @if (auth()->user())
-      <a class="nav-link" href="{{ route('dashboard') }}">{{ __('Painel do Usuário') }}</a>
-    @endif
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="{{ url('/') }}"><i style='font-size:24px' class='fas'>&#xf135;</i>&ensp;EDUCA Brasil</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +36,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto my-2 my-lg-0">
           <li class="nav-item">
-            <a id="nav-link-register" class="nav-link js-scroll-trigger nav-link-important" href="{{ url('cadastro') }}">Cadastrar-se</a>
+            <a id="nav-link-register" class="nav-link js-scroll-trigger nav-link-important btn btn-primary text-white px-3 py-2" href="{{ url('cadastro') }}">Cadastrar-se</a>
           </li>
         </ul>
       </div>

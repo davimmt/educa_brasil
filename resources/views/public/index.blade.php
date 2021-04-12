@@ -25,7 +25,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
     @if (auth()->user())
-      <a class="nav-link" href="{{ route('dashboard') }}">{{ __('Painel do Usuário') }}</a>
+      <a class="nav-link btn btn-outline-primary" href="{{ route('dashboard') }}">{{ __('Painel do Usuário') }}</a>
     @endif
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="#page-top"><i style='font-size:24px' class='fas'>&#xf135;</i>&ensp;EDUCA Brasil</a>
